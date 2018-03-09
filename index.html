@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<title>Reading Position Check</title>
+	
+	<!-- Load the library script -->
+	<script src="js/reading_position.js"></script>
+	
+	<!-- Load some CSS for site and button styling (optional) -->
+	<link rel="stylesheet" href="css/style.css" title="main-template">
+
+</head>
+
+<body onload="start()">
+
+<!--<button type="button" class="btn-class" onclick="start();">Detect the gyroscope values</button> --> 
+
+<p id="text" class "">
+Here is some text to read.
+</p>
+
+<!--<p id="mag_alpha">No magnetometer found.</p>
+<p id="mag_beta"></p>
+<p id="mag_gamma"></p> -->
+
+	<p id="debug" class="responsiveText"></p>
+
+	<p id="output" class="responsiveText"></p>
+
+	<p id="light" class="responsiveText">There is no ambient light sensor.</p>
+
+	<p id="seconds" class="responsiveText">Seconds not counted</p>
+
+</body>
+
+</html>
+
+
