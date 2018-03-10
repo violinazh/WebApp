@@ -15,23 +15,47 @@
 
 <body onload="start()">
 
-<!--<button type="button" class="btn-class" onclick="start();">Detect the gyroscope values</button> --> 
+	<header>
+		
+		<h1> Reader's Aid </h1>
+	</header>
 
-<p id="text" class "">
-Here is some text to read.
-</p>
+	<section>
+
+		<button type="button" class="btn-class" onclick="file();">Load file to read</button> 
+
+		<p id="text" class="responsiveText">No file has been loaded.</p>
+
+	</section>
+
+	<aside>
+	
+		<p id="seconds" class="responsiveText">Seconds not counted.</p>
+
+		<p id="debug" class="responsiveText"></p>
+
+		<p id="output" class="responsiveText"></p>
+
+		<p id="light" class="responsiveText">There is no ambient light sensor.</p>
+
+		<!-- Rounded switch -->
+		<label class="switch">
+  			<input type="checkbox">
+  			<span class="slider round"></span>
+		</label> 
+		
+	</aside>
+
 
 <!--<p id="mag_alpha">No magnetometer found.</p>
 <p id="mag_beta"></p>
 <p id="mag_gamma"></p> -->
 
-	<p id="debug" class="responsiveText"></p>
+	<footer>
+		
+	</footer>
 
-	<p id="output" class="responsiveText"></p>
-
-	<p id="light" class="responsiveText">There is no ambient light sensor.</p>
-
-	<p id="seconds" class="responsiveText">Seconds not counted</p>
+	
 
 </body>
 
