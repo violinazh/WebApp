@@ -2,63 +2,109 @@
 <html>
 
 <head>
-	<meta charset="utf-8">
-	<title>Reading Position Check</title>
 	
+	<!-- Adjustment for the view on all devices-->
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 	<!-- Load the library script -->
 	<script src="js/reading_position.js"></script>
 	
 	<!-- Load some CSS for site and button styling (optional) -->
 	<link rel="stylesheet" href="css/style.css" title="main-template">
 
+	<title>Reading Position Check</title>
+	
 </head>
 
 <body onload="start()">
 
-	<header>
+	<ul>
+ 
+		<button class="accordion">Info</button>
+		<div class="panel">
+  			<p>
+			This is a a helping website/app, which has the following three functions to help a reader: <br><br>
+
+			1. <b>Position check</b> is meant to inform the user if his position is right for reading, so that he does not hurt his back and neck.<br>
+			2. <b>Light sensor</b> is used to determine if the user is reading in a dark environment and the color of the background is adjusted accordingly.<br>
+
+				<p style="color:red">Warning: Light sensors are only detectable on Firefox browsers!</p>
+
+			3. <b>Reading time</b> is counted and the user gets a notification/alert when he must do a break, so that his eyes do not get tired.
+			</p>
+		</div>
+
+		<button class="button" onclick="file();">Load file to read</button>
+
+<br><br>
+
+		<div class="div" id="position"> 
+
+			POSITION <br>
+
+			<p>Turn on/off:</p>  	
+
+			<!-- Rounded switch -->
+			<label class="switch">
+		  		<input type="checkbox" id="chbxPos" onchange="chbxPos();">
+		  		<span class="slider round"></span>
+			</label> 
+<br><br>
+
+			<p id="debug" class="responsiveText"></p>
+			<p id="output" class="responsiveText"></p>
+
+		</div>
+<br>
+
+		<div class="div" id="lightel"> 
+	
+			LIGHT <br>
+
+			<p>Turn on/off:</p>
+
+			<!-- Rounded switch -->
+			<label class="switch">
+		  		<input type="checkbox" id="chbxLight" onchange="chbxLight();">
+		  		<span class="slider round"></span>
+			</label> 
+<br><br>
+
+			<p id="light" class="responsiveText"></p>
+
+		</div>
+<br>
+
+		<div class="div" id="time">
+
+			TIME <br>
+
+			<p>Turn on/off:</p>
+
+			<!-- Rounded switch -->
+			<label class="switch">
+		  		<input type="checkbox" id="chbxTime" onchange="chbxTime();">
+		  		<span class="slider round"></span>
+			</label> 
+<br><br>
+
+			<p id="seconds" class="responsiveText">Seconds not counted.</p>
+
+		</div>
+<br>
 		
-		<h1> Reader's Aid </h1>
-	</header>
+	</ul>
 
-	<section>
+	<div style="margin-left:25%;padding:1px 16px;height:10000px;">
 
-		<button type="button" class="btn-class" onclick="file();">Load file to read</button> 
+		
+		<h2> Reader's Aid </h2>
 
 		<p id="text" class="responsiveText">No file has been loaded.</p>
-
-	</section>
-
-	<aside>
 	
-		<p id="seconds" class="responsiveText">Seconds not counted.</p>
 
-		<p id="debug" class="responsiveText"></p>
-
-		<p id="output" class="responsiveText"></p>
-
-		<p id="light" class="responsiveText">There is no ambient light sensor.</p>
-
-		<!-- Rounded switch -->
-		<label class="switch">
-  			<input type="checkbox">
-  			<span class="slider round"></span>
-		</label> 
-		
-	</aside>
-
-
-<!--<p id="mag_alpha">No magnetometer found.</p>
-<p id="mag_beta"></p>
-<p id="mag_gamma"></p> -->
-
-	<footer>
-		
-	</footer>
-
-	
+	</div>
 
 </body>
-
 </html>
-
 
