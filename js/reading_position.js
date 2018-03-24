@@ -9,27 +9,39 @@ var maxRange = 50; //45
 // Variable for the range of light
 var lightRange = 100
 
-// Variable for the interval
+// Variable for the time interval
 var interval;
 
 var seconds = 0;
 
 function start() {
 
-	var acc = document.getElementsByClassName("accordion");
-	var i;
+	document.getElementById("infoDesktop").style.display = "none";
+	document.getElementById("infoMobile").style.display = "none";
 
-	for (i = 0; i < acc.length; i++) {
-    acc[i].addEventListener("click", function() {
-        this.classList.toggle("active");
-        var panel = this.nextElementSibling;
-        if (panel.style.display === "block") {
-            panel.style.display = "none";
-        } else {
-            panel.style.display = "block";
-        }
-    });
 }
+
+function showInfo() {
+
+	// Sniff the user agent and match it with a regex. -> use wurfl.io
+	if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+		var x = document.getElementById("infoMobile");
+		if (x.style.display == "none") {
+		    x.style.display = "block";
+		} else {
+		    x.style.display = "none";
+		}
+
+	} else { // User is not on a mobile device.
+		var x = document.getElementById("infoDesktop");
+		if (x.style.display == "none") {
+		    x.style.display = "block";
+		} else {
+		    x.style.display = "none";
+		}
+	}
+
+	
 
 }
 
@@ -62,6 +74,7 @@ function chbxLight() {
 
 }
 
+
 function chbxTime() {
 
 	var checkbox = document.getElementById("chbxTime");
@@ -83,7 +96,8 @@ function position() {
 
 }
 
-function handlePosE(event) { // Event listener for the gyroscope
+// Event listener for the gyroscope
+function handlePosE(event) {
 
 		var x = event.beta;  // In degree in the range [-180,180]; motion around the x axis
 		var y = event.gamma;  // In degree in the range [-90,90]; motion around the y axis	 
@@ -106,7 +120,7 @@ function handlePosE(event) { // Event listener for the gyroscope
 
 			if (window.matchMedia("(orientation: landscape)").matches) { // Detecting landscape mode
 				document.getElementById('debug').innerHTML = "Gamma value = " + y;
-		   		if ((y > -30 || y < -50)) { // Here we handle the wrong position event ??? for 30 and 50
+		   		if ((y > -minRange || y < -maxRange)) { // Here we handle the wrong position event ??? for 30 and 50
 					document.getElementById('output').innerHTML  = "Wrong position!";
 					document.getElementById('output').style.color = "red";
 				} else {
@@ -125,12 +139,13 @@ function light() {
 	   	window.addEventListener("devicelight", handleLightE);
 
 	} else { // API not supported
-	  	document.getElementById('light').innerHTML = "There is no ambient light sensor.";
+	  	document.getElementById('light').innerHTML = "Ambient light sensor API not supported.";
 	}
 
 }
 
-function handleLightE(event) { // Event listener for the ambient light sensor (!!!Works only with mobile firefox version)
+// Event listener for the ambient light sensor (!!!Works only with mobile firefox version)
+function handleLightE(event) {
 
 			var luminosity = event.value;
 			document.getElementById('light').innerHTML = "Light value: " + luminosity;
