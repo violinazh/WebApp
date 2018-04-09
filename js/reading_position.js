@@ -41,8 +41,6 @@ function showInfo() {
 		}
 	}
 
-	
-
 }
 
 function chbxPos() {
